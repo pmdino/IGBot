@@ -12,11 +12,12 @@ chrome_options.add_experimental_option("detach", True)
 import time
 
 driver = webdriver.Chrome('drivers/chromedriver.exe', chrome_options=chrome_options)
+driver.maximize_window()
 
 driver.get('https://instagram.com/')
 
 #login
-time.sleep(20)
+time.sleep(15)
 username=driver.find_element("css selector", "input[name='username']")
 password=driver.find_element("css selector", "input[name='password']")
 username.clear()
@@ -31,3 +32,6 @@ notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").
 #turn on notif
 time.sleep(10)
 notnow2 = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
+time.sleep(10)
+messages = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[2]/div[5]/div/a/div").click()
+
