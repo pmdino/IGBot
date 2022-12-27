@@ -4,7 +4,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from ai import ask
 import os
+import openai
 # from dotenv import load_dotenv
 # load_dotenv('./.env')
 # user = os.environ['USERNAME']
@@ -45,6 +47,7 @@ while running:
     selectMessage = driver.find_element(By.CSS_SELECTOR, 'div._ab8w._ab94._ab97._ab9f._ab9k._ab9p._ab9_._aba8._abcm').click()
     time.sleep(5)
     messageContents = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[1]/div/div/div[2]/div[2]/div/div/div/div/div/div/div/div/div').text
+    response = ask(messageContents)
     time.sleep(5)
     messageArea = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea')
     # time.sleep(15)
