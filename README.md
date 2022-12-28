@@ -1,3 +1,3 @@
 # IGBot
 
-Bot to automate instagram messages using NLP tools
+Bot to automate instagram messages using selenium and NLP
