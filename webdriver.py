@@ -44,10 +44,12 @@ running = True
 while running:
     driver.get('https://www.instagram.com/direct/inbox/')
     time.sleep(10)
-    WebDriverWait(driver, 100).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[1]/div/div/div/div/div[2]/div[5]/div/a/div/div[1]/div/div[2]/div/span", "path2")))
-    if(EC.visibility_of_element_located((By.XPATH, 'path of request noti'))):
-        selectRequest = driver.find_element(By.XPATH, 'request path').click()
-        selectYes = driver.find_element(By.XPATH, 'yes path').click()
+    WebDriverWait(driver, 100).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[1]/div/div/div/div/div[2]/div[5]/div/a/div/div[1]/div/div[2]/div/span", "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/button")))
+    if(EC.visibility_of_element_located((By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/button'))):
+        selectRequest = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/button').click()
+        selectRequestMessage = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[3]/div/div/div/div/a').click()
+        time.sleep(3)
+        selectYes = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div[5]/button').click()
     selectMessage = driver.find_element(By.CSS_SELECTOR, 'div._ab8w._ab94._ab97._ab9f._ab9k._ab9p._ab9_._aba8._abcm').click()
     time.sleep(5)
     messageList = driver.find_elements(By.CSS_SELECTOR, 'div._aacl._aaco._aacu._aacx._aad6._aade')
