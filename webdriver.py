@@ -9,8 +9,8 @@ import os
 import openai
 from dotenv import load_dotenv
 load_dotenv('./.env')
-user = os.environ['USERNAME']
-passw = os.environ['PASSWORD']
+# user = os.environ['USERNAME']
+# passw = os.environ['PASSWORD']
 user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
 chrome_options = Options()
 chrome_options.add_argument("user-data-dir=selenium")
@@ -26,22 +26,22 @@ driver = webdriver.Chrome('drivers/chromedriver.exe', chrome_options=chrome_opti
 # driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'})
 # driver.maximize_window()
 
-driver.get('https://instagram.com/')
+# driver.get('https://instagram.com/')
 
 #login
-time.sleep(15)
-username=driver.find_element("css selector", "input[name='username']")
-password=driver.find_element("css selector", "input[name='password']")
-username.clear()
-password.clear()
-username.send_keys(user)
-password.send_keys(passw)
-login = driver.find_element("css selector", "button[type='submit']").click()
+# time.sleep(15)
+# username=driver.find_element("css selector", "input[name='username']")
+# password=driver.find_element("css selector", "input[name='password']")
+# username.clear()
+# password.clear()
+# username.send_keys(user)
+# password.send_keys(passw)
+# login = driver.find_element("css selector", "button[type='submit']").click()
 
-time.sleep(30)
-notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
-#turn on notif
-time.sleep(30)
+# time.sleep(30)
+# notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
+# #turn on notif
+# time.sleep(30)
 # notnow2 = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
 # time.sleep(30)
 # messages = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[2]/div[5]/div/a/div").click()
