@@ -1,7 +1,7 @@
 # IGBot
 
 
-Bot to automate instagram messages using NLP tools
+Bot to automate instagram messages using NLP tools using selenium
 
 create a .env file that contains
 
