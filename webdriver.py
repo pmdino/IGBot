@@ -11,7 +11,7 @@ chrome_options = Options()
 chrome_options.add_argument("user-data-dir=selenium")
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--window-size=3024, 1964')
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36')
 
 
@@ -39,7 +39,7 @@ while running:
         response, prompt = ask(messageContents, prompt)
         time.sleep(5)
         if response == '':
-            time.sleep(15)
+            time.sleep(20)
         messageArea = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea')
         messageArea.click()
         messageArea.send_keys(response)
