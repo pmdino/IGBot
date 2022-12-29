@@ -22,24 +22,27 @@ driver = webdriver.Chrome('drivers/chromedriver.exe', chrome_options=chrome_opti
 
 running = True
 while running:
-    driver.get('https://www.instagram.com')
-    time.sleep(5)
-    notnowList = driver.find_elements(By.XPATH, "//button[contains(text(), 'Not Now')]")
-    if (len(notnowList) > 0):
-        notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
-    selectMessages = driver.find_element(By.CSS_SELECTOR, "a[href*='inbox']").click()
-    time.sleep(5)
-    WebDriverWait(driver, 100).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[1]/div/div/div/div/div[2]/div[5]/div/a/div/div[1]/div/div[2]")))
-    selectMessage = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/div/a').click()
-    time.sleep(5)
-    messageList = driver.find_elements(By.CSS_SELECTOR, 'div._aacl._aaco._aacu._aacx._aad6._aade')
-    messageContents = messageList[-1].text
-    response = ''
-    response, prompt = ask(messageContents, prompt)
-    time.sleep(5)
-    if response == '':
-        time.sleep(15)
-    messageArea = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea')
-    messageArea.click()
-    messageArea.send_keys(response)
-    messageArea.send_keys(Keys.ENTER)
+    try:
+        driver.get('https://www.instagram.com')
+        time.sleep(5)
+        notnowList = driver.find_elements(By.XPATH, "//button[contains(text(), 'Not Now')]")
+        if (len(notnowList) > 0):
+            notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
+        selectMessages = driver.find_element(By.CSS_SELECTOR, "a[href*='inbox']").click()
+        time.sleep(5)
+        WebDriverWait(driver, 100).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[1]/div/div/div/div/div[2]/div[5]/div/a/div/div[1]/div/div[2]")))
+        selectMessage = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/div/a').click()
+        time.sleep(5)
+        messageList = driver.find_elements(By.CSS_SELECTOR, 'div._aacl._aaco._aacu._aacx._aad6._aade')
+        messageContents = messageList[-1].text
+        response = ''
+        response, prompt = ask(messageContents, prompt)
+        time.sleep(5)
+        if response == '':
+            time.sleep(15)
+        messageArea = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea')
+        messageArea.click()
+        messageArea.send_keys(response)
+        messageArea.send_keys(Keys.ENTER)
+    except:
+        print('uh oh')

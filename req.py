@@ -21,35 +21,35 @@ driver = webdriver.Chrome('drivers/chromedriver.exe', chrome_options=chrome_opti
 
 running = True
 while running:
-    driver.get('https://www.instagram.com')
-    time.sleep(15)
-    notnowList = driver.find_elements(By.XPATH, "//button[contains(text(), 'Not Now')]")
-    if (len(notnowList) > 0):
-        notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
-    # selectMessagesList = driver.find_elements(By.CSS_SELECTOR, 'div.x1i10hfl.xjbqb8w.x6umtig.x1b1mbwd.xaqea5y.xav7gou.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz._a6hd')
-    # selectMessages = selectMessagesList[5].click()
-    selectMessages = driver.find_element(By.CSS_SELECTOR, "a[href*='inbox']").click()
-    # selectMessages = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[2]/div[5]/div/a/div').click()
-    time.sleep(5)
-    hasRequest = driver.find_elements(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/button')
-    if(len(hasRequest) > 0):
-        selectRequest = hasRequest[0].click()
-        time.sleep(5)
-        selectMessageRequest = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[3]/div/div/div').click()
-        time.sleep(5)
-        selectAccept = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div[5]/button').click()
-        time.sleep(5)
+    try:
+        driver.get('https://www.instagram.com')
         time.sleep(15)
-        messageList = driver.find_elements(By.CSS_SELECTOR, 'div._aacl._aaco._aacu._aacx._aad6._aade')
-        messageContents = messageList[-1].text
-        response = ''
-        response, prompt = ask(messageContents, prompt)
+        notnowList = driver.find_elements(By.XPATH, "//button[contains(text(), 'Not Now')]")
+        if (len(notnowList) > 0):
+            notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
+        selectMessages = driver.find_element(By.CSS_SELECTOR, "a[href*='inbox']").click()
         time.sleep(5)
-        if response == '':
+        hasRequest = driver.find_elements(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/button')
+        if(len(hasRequest) > 0):
+            selectRequest = hasRequest[0].click()
+            time.sleep(5)
+            selectMessageRequest = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[3]/div/div/div').click()
+            time.sleep(5)
+            selectAccept = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div[5]/button').click()
+            time.sleep(5)
             time.sleep(15)
-        messageArea = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea')
-        messageArea.click()
-        messageArea.send_keys(response)
-        time.sleep(1)
-        messageArea.send_keys(Keys.ENTER)
-    time.sleep(60)
+            messageList = driver.find_elements(By.CSS_SELECTOR, 'div._aacl._aaco._aacu._aacx._aad6._aade')
+            messageContents = messageList[-1].text
+            response = ''
+            response, prompt = ask(messageContents, prompt)
+            time.sleep(5)
+            if response == '':
+                time.sleep(15)
+            messageArea = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea')
+            messageArea.click()
+            messageArea.send_keys(response)
+            time.sleep(1)
+            messageArea.send_keys(Keys.ENTER)
+        time.sleep(60)
+    except:
+        print('oh oh')
