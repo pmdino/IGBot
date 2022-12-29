@@ -5,9 +5,9 @@ Bot to automate instagram messages using NLP tools
 
 create a .env file that contains
 
-        USERNAME="Account Name"
-        PASSWORD="Account Password"
-        OPENAI_API_KEY="OpenAI API Key"
+    USERNAME="Account Name"
+    PASSWORD="Account Password"
+    OPENAI_API_KEY="OpenAI API Key"
 
 to install necessary packages
 
