@@ -11,7 +11,7 @@ chrome_options = Options()
 chrome_options.add_argument("user-data-dir=selenium")
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--window-size=3024, 1964')
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 chrome_options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36')
 
 users = {
@@ -32,7 +32,8 @@ while running:
             notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
         selectMessages = driver.find_element(By.CSS_SELECTOR, "a[href*='inbox']").click()
         time.sleep(5)
-        WebDriverWait(driver, 1000000).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[1]/div/div/div/div/div[2]/div[5]/div/a/div/div[1]/div/div[2]")))
+        driver.refresh()
+        WebDriverWait(driver, 100).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[1]/div/div/div/div/div[2]/div[5]/div/a/div/div[1]/div/div[2]")))
         selectMessage = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/div/a').click()
         time.sleep(5)
         messageContext = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/div/div[2]/div[2]/div/div/span[1]/span').text
@@ -58,6 +59,8 @@ while running:
                 messageArea = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea')
                 messageArea.click()
                 messageArea.send_keys(response)
+                time.sleep(1)
                 messageArea.send_keys(Keys.ENTER)
+                time.sleep(5)
     except:
         print('uh oh')

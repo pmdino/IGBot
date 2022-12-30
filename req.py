@@ -29,6 +29,8 @@ while running:
             notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
         selectMessages = driver.find_element(By.CSS_SELECTOR, "a[href*='inbox']").click()
         time.sleep(5)
+        driver.refresh()
+        time.sleep(5)
         hasRequest = driver.find_elements(By.XPATH, '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[2]/div/div/div/div/div[1]/button')
         if(len(hasRequest) > 0):
             selectRequest = hasRequest[0].click()
