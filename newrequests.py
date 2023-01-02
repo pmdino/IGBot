@@ -14,7 +14,7 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36')
 
 
-prompt = 'You: What have you been up to?\nWatching old movies.\nDid you watch anything interesting?\n'
+prompt = 'What have you been up to?\nWatching old movies.\nDid you watch anything interesting?\n'
 
 driver = webdriver.Chrome('drivers/chromedriver.exe', chrome_options=chrome_options)
 
