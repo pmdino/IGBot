@@ -22,7 +22,7 @@ while login == False:
         driver.get('https://instagram.com/')
 
         #login
-        time.sleep(15)
+        time.sleep(60)
         username=driver.find_element("css selector", "input[name='username']")
         password=driver.find_element("css selector", "input[name='password']")
         username.clear()
@@ -31,11 +31,11 @@ while login == False:
         password.send_keys(passw)
         login = driver.find_element("css selector", "button[type='submit']").click()
 
-        time.sleep(30)
+        time.sleep(60)
         notnowList = driver.find_elements(By.XPATH, "//button[contains(text(), 'Not Now')]")
         if (len(notnowList) > 0):
             notnow = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
-        time.sleep(30)
+        time.sleep(60)
         notnowList2 = driver.find_elements(By.XPATH, "//button[contains(text(), 'Not Now')]")
         if (len(notnowList2) > 0):
             notnow2 = driver.find_element(By.XPATH, "//button[contains(text(), 'Not Now')]").click()
