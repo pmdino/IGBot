@@ -11,7 +11,7 @@ chrome_options = Options()
 chrome_options.add_argument("user-data-dir=selenium")
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--window-size=3024, 1964')
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36')
 
 users = {
@@ -33,7 +33,7 @@ while running:
         selectMessages = driver.find_element(By.CSS_SELECTOR, "a[href*='inbox']").click()
         time.sleep(5)
         driver.refresh()
-        WebDriverWait(driver, 10000).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div._ab8l._ab8n._ab8w._ab94._ab99._ab9f._ab9m._ab9p._abcm")))
+        WebDriverWait(driver, 28000).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div._ab8l._ab8n._ab8w._ab94._ab99._ab9f._ab9m._ab9p._abcm")))
         selectMessage = driver.find_element(By.CSS_SELECTOR, 'a.x1i10hfl.xjbqb8w.x6umtig.x1b1mbwd.xaqea5y.xav7gou.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz._a6hd').click()
         time.sleep(10)
         messageContext = driver.find_element(By.CSS_SELECTOR, 'span._aacl._aaco._aacu._aacy._aad7').text
